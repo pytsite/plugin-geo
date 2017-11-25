@@ -1,0 +1,22 @@
+{
+  "name": "geo",
+  "version": "1.0",
+  "description": {
+    "en": "Geo",
+    "ru": "Geo",
+    "uk": "Geo"
+  },
+  "url": "https://github.com/pytsite/plugin-geo",
+  "author": {
+    "name": "Alexander Shepetko",
+    "email": "a@shepetko.com",
+    "url": "https://shepetko.com"
+  },
+  "requires": {
+    "packages": [],
+    "plugins": [
+      "odm",
+      "widget"
+    ]
+  }
+}
