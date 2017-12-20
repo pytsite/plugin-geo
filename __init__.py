@@ -20,3 +20,10 @@ def plugin_load():
     assetman.register_package(__name__)
     assetman.t_js(__name__)
     assetman.js_module('pytsite-geo-widget-location', __name__ + '@js/pytsite-geo-widget-location')
+
+
+def plugin_install():
+    from plugins import assetman
+
+    plugin_load()
+    assetman.build(__name__)
