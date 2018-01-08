@@ -1,10 +1,10 @@
 {
   "name": "geo",
-  "version": "1.1.2",
+  "version": "1.2",
   "description": {
     "en": "Geo",
-    "ru": "Geo",
-    "uk": "Geo"
+    "ru": "Гео",
+    "uk": "Гео"
   },
   "url": "https://github.com/pytsite/plugin-geo",
   "author": {

@@ -1,17 +1,18 @@
-"""Geo ODM Fields
+"""PytSite Geo Plugin ODM Fields
 """
-from typing import Union as _Union
-from frozendict import frozendict as _frozendict
-from plugins import odm as _odm
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
+
+from typing import Union as _Union
+from frozendict import frozendict as _frozendict
+from plugins import odm as _odm
 
 
 class Location(_odm.field.Dict):
     """Geo Location Field.
     """
+
     def __init__(self, name: str, **kwargs):
         default = kwargs.get('default', {
             'lng': 0.0,
@@ -66,6 +67,7 @@ class Location(_odm.field.Dict):
 class Address(_odm.field.Dict):
     """Geo Address Field.
     """
+
     def __init__(self, name: str, **kwargs):
         """Init.
         """
@@ -109,11 +111,17 @@ class Address(_odm.field.Dict):
 
             # Checking address
             if 'address' in value and not isinstance(value['address'], str):
-                raise ValueError("Field '{}.address': str expected.".format(self.name))
+                raise TypeError("Value of field '{}.address' must be a str".format(self.name))
 
             # Checking address components
-            if 'address_components' in value and not isinstance(value['address_components'], (list, tuple)):
-                raise ValueError("Field '{}.address_components': list or tuple expected.".format(self.name))
+            if 'address_components' in value:
+                if not isinstance(value['address_components'], (list, tuple)):
+                    raise TypeError("Value of field '{}.address_components' must be a list".format(self.name))
+
+                for v in value['address_components']:
+                    if not isinstance(v, str):
+                        raise TypeError(
+                            "Value of field '{}.address_components' must be a list of str".format(self.name))
 
             value['geo_point'] = {
                 'type': 'Point',

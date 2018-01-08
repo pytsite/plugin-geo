@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.2 (2018-01-08)
+
+Module `types` moved from `geo` plugin.
+
+
 ### 1.1.2 (2017-12-21)
 
 Init code refactored.

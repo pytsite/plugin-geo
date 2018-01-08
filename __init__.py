@@ -8,7 +8,7 @@ from pytsite import plugman as _plugman
 
 if _plugman.is_installed(__name__):
     # Public API
-    from . import _widget as widget, _field as field, _validation_rule as validation_rule
+    from . import _types as types, _widget as widget, _field as field, _validation_rule as validation_rule
 
 
 def _register_assetman_resources():
