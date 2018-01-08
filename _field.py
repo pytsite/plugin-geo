@@ -65,7 +65,7 @@ class Location(_odm.field.Dict):
 
 
 class Address(_odm.field.Dict):
-    """Geo Address Field.
+    """Geo Address Field
     """
 
     def __init__(self, name: str, **kwargs):
@@ -75,7 +75,6 @@ class Address(_odm.field.Dict):
             'lng': 0.0,
             'lat': 0.0,
             'address': '',
-            'address_components': [],
         })
 
         # Helper for building MongoDB's indexes
@@ -113,16 +112,7 @@ class Address(_odm.field.Dict):
             if 'address' in value and not isinstance(value['address'], str):
                 raise TypeError("Value of field '{}.address' must be a str".format(self.name))
 
-            # Checking address components
-            if 'address_components' in value:
-                if not isinstance(value['address_components'], (list, tuple)):
-                    raise TypeError("Value of field '{}.address_components' must be a list".format(self.name))
-
-                for v in value['address_components']:
-                    if not isinstance(v, str):
-                        raise TypeError(
-                            "Value of field '{}.address_components' must be a list of str".format(self.name))
-
+            # Helper for building MongoDB's indexes
             value['geo_point'] = {
                 'type': 'Point',
                 'coordinates': (value['lng'], value['lat']),

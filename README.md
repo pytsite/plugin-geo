@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.2.1 (2018-01-08)
+
+Unnecessary ODM field part removed.
+
+
 ### 1.2 (2018-01-08)
 
 Module `types` moved from `geo` plugin.
