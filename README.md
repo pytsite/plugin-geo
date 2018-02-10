@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 1.3 (2018-08-10)
+
+`widget` submodule moved to the new `geo_ui` plugin.
+
+
 ### 1.2.1 (2018-01-08)
 
 Unnecessary ODM field part removed.

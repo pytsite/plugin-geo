@@ -1,13 +1,13 @@
 """Geo Validation Rules
 """
-from pytsite import validation as _validation
-
 __author__ = 'Alexander Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
+from pytsite import validation as _ps_validation
 
-class LocationNonEmpty(_validation.rule.DictPartsNonEmpty):
+
+class LocationNonEmpty(_ps_validation.rule.DictPartsNonEmpty):
     """Check if the location structure is not empty.
     """
 
@@ -18,7 +18,7 @@ class LocationNonEmpty(_validation.rule.DictPartsNonEmpty):
         super().__init__(value, msg_id, msg_args, keys=('lng', 'lat'))
 
 
-class AddressNonEmpty(_validation.rule.DictPartsNonEmpty):
+class AddressNonEmpty(_ps_validation.rule.DictPartsNonEmpty):
     """Check if an address structure is empty.
     """
 
