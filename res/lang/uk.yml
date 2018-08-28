@@ -1,2 +1,72 @@
+geo: 'Гео'
+latitude: 'Широта'
+longitude: 'Довгота'
+country: 'Країна'
+countries: 'Країни'
+province: 'Область'
+provinces: 'Області'
+city: 'Місто'
+cities: 'Міста'
+district: 'Район'
+districts: 'Райони'
+street: 'Вулиця'
+streets: 'Вулиці'
+building: 'Будівля'
+buildings: 'Будівлі'
+
 validation_geolocationnotempty: 'Не визначено місце розташування'
 validation_geoaddressnotempty: 'Введіть адресу'
+
+odm_ui_browser_title_geo_country: 'Огляд країн'
+odm_ui_form_title_create_geo_country: 'Нова країна'
+odm_ui_form_title_modify_geo_country: 'Зміна країни'
+odm_ui_form_title_delete_geo_country: 'Видалення країн'
+
+odm_ui_browser_title_geo_province: 'Огляд областей'
+odm_ui_form_title_create_geo_province: 'Нова область'
+odm_ui_form_title_modify_geo_province: 'Зміна області'
+odm_ui_form_title_delete_geo_province: 'Видалення областей'
+
+odm_ui_browser_title_geo_city: 'Огляд міст'
+odm_ui_form_title_create_geo_city: 'Нове місто'
+odm_ui_form_title_modify_geo_city: 'Зміна міста'
+odm_ui_form_title_delete_geo_city: 'Видалення міст'
+
+odm_ui_browser_title_geo_district: 'Огляд районів'
+odm_ui_form_title_create_geo_district: 'Новий район'
+odm_ui_form_title_modify_geo_district: 'Зміна району'
+odm_ui_form_title_delete_geo_district: 'Видалення районів'
+
+odm_ui_browser_title_geo_street: 'Огляд вулиць'
+odm_ui_form_title_create_geo_street: 'Нова вулиця'
+odm_ui_form_title_modify_geo_street: 'Зміна вулиці'
+odm_ui_form_title_delete_geo_street: 'Видалення вулиць'
+
+odm_ui_browser_title_geo_building: 'Огляд будівель'
+odm_ui_form_title_create_geo_building: 'Нова будівля'
+odm_ui_form_title_modify_geo_building: 'Зміна будівлі'
+odm_ui_form_title_delete_geo_building: 'Видалення будівель'
+
+odm_auth_create_geo_country: 'Створення країн'
+odm_auth_modify_geo_country: 'Зміна країн'
+odm_auth_delete_geo_country: 'Видалення країн'
+
+odm_auth_create_geo_province: 'Створення областей'
+odm_auth_modify_geo_province: 'Зміна областей'
+odm_auth_delete_geo_province: 'Видалення областей'
+
+odm_auth_create_geo_city: 'Створення міст'
+odm_auth_modify_geo_city: 'Зміна міст'
+odm_auth_delete_geo_city: 'Видалення міст'
+
+odm_auth_create_geo_district: 'Створення районів'
+odm_auth_modify_geo_district: 'Зміна районів'
+odm_auth_delete_geo_district: 'Видалення районів'
+
+odm_auth_create_geo_street: 'Створення вулиць'
+odm_auth_modify_geo_street: 'Зміна вулиць'
+odm_auth_delete_geo_street: 'Видалення вулиць'
+
+odm_auth_create_geo_building: 'Створення будівель'
+odm_auth_modify_geo_building: 'Зміна будівель'
+odm_auth_delete_geo_building: 'Видалення будівель'

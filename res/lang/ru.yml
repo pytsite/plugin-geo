@@ -1,2 +1,72 @@
+geo: 'Гео'
+latitude: 'Широта'
+longitude: 'Долгота'
+country: 'Страна'
+countries: 'Страны'
+province: 'Область'
+provinces: 'Области'
+city: 'Город'
+cities: 'Города'
+district: 'Район'
+districts: 'Районы'
+street: 'Улица'
+streets: 'Улицы'
+building: 'Здание'
+buildings: 'Здания'
+
 validation_geolocationnotempty: 'Не определено местоположение'
 validation_geoaddressnotempty: 'Введите адрес'
+
+odm_ui_browser_title_geo_country: 'Обзор стран'
+odm_ui_form_title_create_geo_country: 'Новая страна'
+odm_ui_form_title_modify_geo_country: 'Изменение страны'
+odm_ui_form_title_delete_geo_country: 'Удаление стран'
+
+odm_ui_browser_title_geo_province: 'Обзор областей'
+odm_ui_form_title_create_geo_province: 'Новая область'
+odm_ui_form_title_modify_geo_province: 'Изменение области'
+odm_ui_form_title_delete_geo_province: 'Удаление областей'
+
+odm_ui_browser_title_geo_city: 'Обзор городов'
+odm_ui_form_title_create_geo_city: 'Новый город'
+odm_ui_form_title_modify_geo_city: 'Изменение города'
+odm_ui_form_title_delete_geo_city: 'Удаление городов'
+
+odm_ui_browser_title_geo_district: 'Обзор районов'
+odm_ui_form_title_create_geo_district: 'Новый район'
+odm_ui_form_title_modify_geo_district: 'Изменение района'
+odm_ui_form_title_delete_geo_district: 'Удаление районов'
+
+odm_ui_browser_title_geo_street: 'Обзор улиц'
+odm_ui_form_title_create_geo_street: 'Новая улица'
+odm_ui_form_title_modify_geo_street: 'Изменение улицы'
+odm_ui_form_title_delete_geo_street: 'Удаление улиц'
+
+odm_ui_browser_title_geo_building: 'Обзор зданий'
+odm_ui_form_title_create_geo_building: 'Новое здание'
+odm_ui_form_title_modify_geo_building: 'Изменение здания'
+odm_ui_form_title_delete_geo_building: 'Удаление зданий'
+
+odm_auth_create_geo_country: 'Создание стран'
+odm_auth_modify_geo_country: 'Изменение стран'
+odm_auth_delete_geo_country: 'Удаление стран'
+
+odm_auth_create_geo_province: 'Создание областей'
+odm_auth_modify_geo_province: 'Изменение областей'
+odm_auth_delete_geo_province: 'Удаление областей'
+
+odm_auth_create_geo_city: 'Создание городов'
+odm_auth_modify_geo_city: 'Изменение городов'
+odm_auth_delete_geo_city: 'Удаление городов'
+
+odm_auth_create_geo_district: 'Создание районов'
+odm_auth_modify_geo_district: 'Изменение районов'
+odm_auth_delete_geo_district: 'Удаление районов'
+
+odm_auth_create_geo_street: 'Создание улиц'
+odm_auth_modify_geo_street: 'Изменение улиц'
+odm_auth_delete_geo_street: 'Удаление улиц'
+
+odm_auth_create_geo_building: 'Создание зданий'
+odm_auth_modify_geo_building: 'Изменение зданий'
+odm_auth_delete_geo_building: 'Удаление зданий'

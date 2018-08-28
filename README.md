@@ -4,6 +4,12 @@
 ## Changelog
 
 
+### 2.0 (2018-08-28)
+
+ODM models, fields and corresponding widgets added to represent basic
+geo administrative levels.
+
+
 ### 1.3 (2018-08-10)
 
 `widget` submodule moved to the new `geo_ui` plugin.

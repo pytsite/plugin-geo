@@ -1,2 +1,72 @@
+geo: 'Geo'
+latitude: 'Latitude'
+longitude: 'Longitude'
+country: 'Country'
+countries: 'Countries'
+province: 'Province'
+provinces: 'Provinces'
+city: 'City'
+cities: 'Cities'
+district: 'District'
+districts: 'Districts'
+street: 'Street'
+streets: 'Streets'
+building: 'Building'
+buildings: 'Buildings'
+
 validation_geolocationnotempty: 'Location is not specified'
 validation_geoaddressnotempty: 'Enter address'
+
+odm_ui_browser_title_geo_country: 'Browse countries'
+odm_ui_form_title_create_geo_country: 'New country'
+odm_ui_form_title_modify_geo_country: 'Modify country'
+odm_ui_form_title_delete_geo_country: 'Delete country(ies)'
+
+odm_ui_browser_title_geo_province: 'Browse provinces'
+odm_ui_form_title_create_geo_province: 'New province'
+odm_ui_form_title_modify_geo_province: 'Modify province'
+odm_ui_form_title_delete_geo_province: 'Delete province(s)'
+
+odm_ui_browser_title_geo_city: 'Browse cities'
+odm_ui_form_title_create_geo_city: 'New city'
+odm_ui_form_title_modify_geo_city: 'Modify city'
+odm_ui_form_title_delete_geo_city: 'Delete city(ies)'
+
+odm_ui_browser_title_geo_district: 'Browse districts'
+odm_ui_form_title_create_geo_district: 'New district'
+odm_ui_form_title_modify_geo_district: 'Modify district'
+odm_ui_form_title_delete_geo_district: 'Delete district(s)'
+
+odm_ui_browser_title_geo_street: 'Browse streets'
+odm_ui_form_title_create_geo_street: 'New street'
+odm_ui_form_title_modify_geo_street: 'Modify street'
+odm_ui_form_title_delete_geo_street: 'Delete street(s)'
+
+odm_ui_browser_title_geo_building: 'Browse buildings'
+odm_ui_form_title_create_geo_building: 'New building'
+odm_ui_form_title_modify_geo_building: 'Modify building'
+odm_ui_form_title_delete_geo_building: 'Delete building(s)'
+
+odm_auth_create_geo_country: 'Create countries'
+odm_auth_modify_geo_country: 'Modify countries'
+odm_auth_delete_geo_country: 'Delete countries'
+
+odm_auth_create_geo_province: 'Create provinces'
+odm_auth_modify_geo_province: 'Modify provinces'
+odm_auth_delete_geo_province: 'Delete provinces'
+
+odm_auth_create_geo_city: 'Create cities'
+odm_auth_modify_geo_city: 'Modify cities'
+odm_auth_delete_geo_city: 'Delete cities'
+
+odm_auth_create_geo_district: 'Create districts'
+odm_auth_modify_geo_district: 'Modify districts'
+odm_auth_delete_geo_district: 'Delete districts'
+
+odm_auth_create_geo_street: 'Create streets'
+odm_auth_modify_geo_street: 'Modify streets'
+odm_auth_delete_geo_street: 'Delete streets'
+
+odm_auth_create_geo_building: 'Create buildings'
+odm_auth_modify_geo_building: 'Modify buildings'
+odm_auth_delete_geo_building: 'Delete buildings'
