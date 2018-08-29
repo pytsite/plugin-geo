@@ -4,6 +4,12 @@
 ## Changelog
 
 
+### 2.1 (2018-08-29)
+
+New API functions: `find()`, `find_country()`, `find_province()`,
+`find_city()`, `find_district()`, `find_street()`, `find_building()`.
+
+
 ### 2.0 (2018-08-28)
 
 ODM models, fields and corresponding widgets added to represent basic
