@@ -1,6 +1,6 @@
 {
   "name": "geo",
-  "version": "2.1",
+  "version": "2.1.1",
   "description": {
     "en": "Geo",
     "ru": "Гео",
@@ -21,7 +21,7 @@
       "odm_ui>=3.19",
       "tag>=3.1",
       "taxonomy>=4.0",
-      "widget>=2.13"
+      "widget>=2.13.1"
     ]
   }
 }

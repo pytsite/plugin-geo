@@ -71,8 +71,9 @@ class _AministrativeEntity(_tag.Tag):
 
         for k, v in args.items():
             try:
-                if f.mock.has_field(k) and v:
-                    f.eq(k, v)
+                f_name = k.replace('geo_', '')
+                if f.mock.has_field(f_name) and v:
+                    f.eq(f_name, v)
             except _odm.error.InvalidReference as e:
                 _logger.error(e)
                 return []
@@ -144,7 +145,7 @@ class Province(_AministrativeEntity):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'country' in args:
+        if 'geo_country' in args:
             return self.title
         else:
             return '{}, {}'.format(self.title, self.country.title)
@@ -208,7 +209,7 @@ class City(_AministrativeEntity):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'province' in args:
+        if 'geo_province' in args:
             return self.title
         else:
             return '{}, {}, {}'.format(self.title, self.province.title, self.country.title)
@@ -278,7 +279,7 @@ class District(_AministrativeEntity):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'city' in args:
+        if 'geo_city' in args:
             return self.title
         else:
             return '{}, {}, {}, {}'.format(self.title, self.city.title, self.province.title, self.country.title)
@@ -354,7 +355,7 @@ class Street(_AministrativeEntity):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'district' in args:
+        if 'geo_district' in args:
             return self.title
         return '{}, {}, {}, {}, {}'.format(
             self.title, self.district.title, self.city.title, self.province.title, self.country.title)
@@ -436,7 +437,7 @@ class Building(_AministrativeEntity):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'street' in args:
+        if 'geo_street' in args:
             return self.title
         else:
             return '{}, {}, {}, {}, {}, {}'.format(self.title, self.street.title, self.district.title, self.city.title,

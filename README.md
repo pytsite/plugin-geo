@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 2.1.1 (2018-08-29)
+
+Linked select widgets incorrect behaviour fixed.
+
+
 ### 2.1 (2018-08-29)
 
 New API functions: `find()`, `find_country()`, `find_province()`,
