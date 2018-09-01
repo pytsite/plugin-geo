@@ -27,7 +27,7 @@ def find(model: str, title: str = None, alias: str = None, language: str = None)
     f = _taxonomy.find(model.format(model), language)
 
     if title:
-        f.regex('^title$', title, True)
+        f.regex('title', '^{}$'.format(title), True)
 
     if alias:
         f.eq('alias', alias)

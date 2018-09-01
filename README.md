@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 2.3.1 (2018-09-01)
+
+Error in `find()` fixed.
+
+
 ### 2.3 (2018-09-01)
 
 - New API function `dispense()` added.
