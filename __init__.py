@@ -6,7 +6,7 @@ __license__ = 'MIT'
 
 # Public API
 from . import _types as types, _field as field, _validation as validation, _model as model, _widget as widget
-from ._api import find, find_country, find_province, find_city, find_district, find_street, find_building
+from ._api import dispense, find, find_country, find_province, find_city, find_district, find_street, find_building
 
 
 def plugin_load():

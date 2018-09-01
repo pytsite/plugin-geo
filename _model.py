@@ -11,7 +11,7 @@ from plugins import odm as _odm, odm_ui as _odm_ui, tag as _tag, form as _form, 
 from . import _field, _widget as _geo_widget
 
 
-class _AministrativeEntity(_tag.Tag):
+class AministrativeObject(_tag.Tag):
     def _setup_fields(self):
         super()._setup_fields()
 
@@ -85,7 +85,7 @@ class _AministrativeEntity(_tag.Tag):
                 for e in f.get(10)]
 
 
-class Country(_AministrativeEntity):
+class Country(AministrativeObject):
     """Country Term
     """
 
@@ -93,7 +93,7 @@ class Country(_AministrativeEntity):
         return self.title
 
 
-class Province(_AministrativeEntity):
+class Province(AministrativeObject):
     """Province Term
     """
 
@@ -151,7 +151,7 @@ class Province(_AministrativeEntity):
             return '{}, {}'.format(self.title, self.country.title)
 
 
-class City(_AministrativeEntity):
+class City(AministrativeObject):
     """City Term
     """
 
@@ -215,7 +215,7 @@ class City(_AministrativeEntity):
             return '{}, {}, {}'.format(self.title, self.province.title, self.country.title)
 
 
-class District(_AministrativeEntity):
+class District(AministrativeObject):
     """District Term
     """
 
@@ -285,7 +285,7 @@ class District(_AministrativeEntity):
             return '{}, {}, {}, {}'.format(self.title, self.city.title, self.province.title, self.country.title)
 
 
-class Street(_AministrativeEntity):
+class Street(AministrativeObject):
     """Street Term
     """
 
@@ -361,7 +361,7 @@ class Street(_AministrativeEntity):
             self.title, self.district.title, self.city.title, self.province.title, self.country.title)
 
 
-class Building(_AministrativeEntity):
+class Building(AministrativeObject):
     """Street Term
     """
 

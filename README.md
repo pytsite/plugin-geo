@@ -4,6 +4,12 @@
 ## Changelog
 
 
+### 2.3 (2018-09-01)
+
+- New API function `dispense()` added.
+- `find()` fixed.
+
+
 ### 2.2.1 (2018-09-01)
 
 Inheritance of `field.AdministrativeObject` fixed.
