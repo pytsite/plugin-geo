@@ -4,9 +4,14 @@
 ## Changelog
 
 
+### 2.2.1 (2018-09-01)
+
+Inheritance of `field.AdministrativeObject` fixed.
+
+
 ### 2.2 (2018-09-01)
 
-New base class `AdministrativeObject` added.
+New `field.AdministrativeObject` added.
 
 
 ### 2.1.1 (2018-08-29)
