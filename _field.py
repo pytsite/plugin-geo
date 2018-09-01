@@ -121,7 +121,11 @@ class Address(_odm.field.Dict):
         return super().set_val(value, **kwargs)
 
 
-class Country(_odm.field.ManualRef):
+class AdministrativeObject:
+    pass
+
+
+class Country(_odm.field.ManualRef, AdministrativeObject):
     """Country Reference Field
     """
 
@@ -131,7 +135,7 @@ class Country(_odm.field.ManualRef):
         super().__init__(name, model='geo_country', **kwargs)
 
 
-class Province(_odm.field.ManualRef):
+class Province(_odm.field.ManualRef, AdministrativeObject):
     """Province Reference Field
     """
 
@@ -141,7 +145,7 @@ class Province(_odm.field.ManualRef):
         super().__init__(name, model='geo_province', **kwargs)
 
 
-class City(_odm.field.ManualRef):
+class City(_odm.field.ManualRef, AdministrativeObject):
     """City Reference Field
     """
 
@@ -151,7 +155,7 @@ class City(_odm.field.ManualRef):
         super().__init__(name, model='geo_city', **kwargs)
 
 
-class District(_odm.field.ManualRef):
+class District(_odm.field.ManualRef, AdministrativeObject):
     """District Reference Field
     """
 
@@ -161,7 +165,7 @@ class District(_odm.field.ManualRef):
         super().__init__(name, model='geo_district', **kwargs)
 
 
-class Street(_odm.field.ManualRef):
+class Street(_odm.field.ManualRef, AdministrativeObject):
     """Street Reference Field
     """
 
@@ -171,7 +175,7 @@ class Street(_odm.field.ManualRef):
         super().__init__(name, model='geo_street', **kwargs)
 
 
-class Building(_odm.field.ManualRef):
+class Building(_odm.field.ManualRef, AdministrativeObject):
     """Building Reference Field
     """
 
