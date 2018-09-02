@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 2.4 (2018-09-02)
+
+Automatic missing ODM entities creation from  widgets added.
+
+
 ### 2.3.1 (2018-09-01)
 
 Error in `find()` fixed.

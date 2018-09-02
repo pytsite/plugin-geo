@@ -7,7 +7,7 @@ __license__ = 'MIT'
 from typing import Union as _Union
 from frozendict import frozendict as _frozendict
 from pytsite import html as _html, validation as _validation
-from plugins import geo as _geo, widget as _widget, taxonomy as _taxonomy
+from plugins import geo as _geo, widget as _widget, odm as _odm, taxonomy as _taxonomy
 
 
 class Location(_widget.Abstract):
@@ -106,14 +106,54 @@ class Location(_widget.Abstract):
         return inputs
 
 
-class CountrySelect(_taxonomy.widget.TermSelectSearch):
+class AdministrativeSelect(_taxonomy.widget.TermSelectSearch):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
-        super().__init__(uid, model='geo_country', sort_field='title', **kwargs)
+        super().__init__(uid, sort_field='title', **kwargs)
+
+        if self._tags and not self._linked_select:
+            raise RuntimeError('You cannot use tags without linked select')
+
+    def set_val(self, value):
+        # Value may be not a reference but simple string
+        if value and self._tags:
+            try:
+                # Check if the reference was given
+                _odm.resolve_manual_ref(value)
+            except _odm.error.InvalidReference:
+                from . import _api
+
+                # Search for existing term
+                term = _api.find(self._model, value).first()
+
+                # Term not found, create it
+                if not term:
+                    term = _api.dispense(self._model, value)
+                    if self._model == 'geo_province':
+                        term.f_set('country', self._linked_select.value)
+                    elif self._model == 'geo_city':
+                        term.f_set('province', self._linked_select.value)
+                    elif self._model == 'geo_district':
+                        term.f_set('city', self._linked_select.value)
+                    elif self._model == 'geo_street':
+                        term.f_set('district', self._linked_select.value)
+                    elif self._model == 'geo_building':
+                        term.f_set('street', self._linked_select.value)
+
+                value = term.save().manual_ref
+
+        return super().set_val(value)
 
 
-class ProvinceSelect(_taxonomy.widget.TermSelectSearch):
+class CountrySelect(AdministrativeSelect):
+    def __init__(self, uid: str, **kwargs):
+        """Init
+        """
+        super().__init__(uid, model='geo_country', **kwargs)
+
+
+class ProvinceSelect(AdministrativeSelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -121,10 +161,10 @@ class ProvinceSelect(_taxonomy.widget.TermSelectSearch):
         if isinstance(country_select, CountrySelect):
             kwargs['linked_select'] = country_select
 
-        super().__init__(uid, model='geo_province', sort_field='title', **kwargs)
+        super().__init__(uid, model='geo_province', **kwargs)
 
 
-class CitySelect(_taxonomy.widget.TermSelectSearch):
+class CitySelect(AdministrativeSelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -132,10 +172,10 @@ class CitySelect(_taxonomy.widget.TermSelectSearch):
         if isinstance(province_select, ProvinceSelect):
             kwargs['linked_select'] = province_select
 
-        super().__init__(uid, model='geo_city', sort_field='title', **kwargs)
+        super().__init__(uid, model='geo_city', **kwargs)
 
 
-class DistrictSelect(_taxonomy.widget.TermSelectSearch):
+class DistrictSelect(AdministrativeSelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -143,10 +183,10 @@ class DistrictSelect(_taxonomy.widget.TermSelectSearch):
         if isinstance(city_select, CitySelect):
             kwargs['linked_select'] = city_select
 
-        super().__init__(uid, model='geo_district', sort_field='title', **kwargs)
+        super().__init__(uid, model='geo_district', **kwargs)
 
 
-class StreetSelect(_taxonomy.widget.TermSelectSearch):
+class StreetSelect(AdministrativeSelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -154,10 +194,10 @@ class StreetSelect(_taxonomy.widget.TermSelectSearch):
         if isinstance(district_select, DistrictSelect):
             kwargs['linked_select'] = district_select
 
-        super().__init__(uid, model='geo_street', sort_field='title', **kwargs)
+        super().__init__(uid, model='geo_street', **kwargs)
 
 
-class BuildingSelect(_taxonomy.widget.TermSelectSearch):
+class BuildingSelect(AdministrativeSelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -165,4 +205,4 @@ class BuildingSelect(_taxonomy.widget.TermSelectSearch):
         if isinstance(street_select, StreetSelect):
             kwargs['linked_select'] = street_select
 
-        super().__init__(uid, model='geo_building', sort_field='title', **kwargs)
+        super().__init__(uid, model='geo_building', **kwargs)
