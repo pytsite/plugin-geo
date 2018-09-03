@@ -145,10 +145,10 @@ class Province(AministrativeObject):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'geo_country' in args:
-            return self.title
-        else:
+        if args.get('full_title'):
             return '{}, {}'.format(self.title, self.country.title)
+        else:
+            return self.title
 
 
 class City(AministrativeObject):
@@ -209,10 +209,10 @@ class City(AministrativeObject):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'geo_province' in args:
-            return self.title
-        else:
+        if args.get('full_title'):
             return '{}, {}, {}'.format(self.title, self.province.title, self.country.title)
+        else:
+            return self.title
 
 
 class District(AministrativeObject):
@@ -279,10 +279,10 @@ class District(AministrativeObject):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'geo_city' in args:
-            return self.title
-        else:
+        if args.get('full_title'):
             return '{}, {}, {}, {}'.format(self.title, self.city.title, self.province.title, self.country.title)
+        else:
+            return self.title
 
 
 class Street(AministrativeObject):
@@ -355,10 +355,11 @@ class Street(AministrativeObject):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'geo_district' in args:
+        if args.get('full_title'):
+            return '{}, {}, {}, {}, {}'.format(self.title, self.district.title, self.city.title, self.province.title,
+                                               self.country.title)
+        else:
             return self.title
-        return '{}, {}, {}, {}, {}'.format(
-            self.title, self.district.title, self.city.title, self.province.title, self.country.title)
 
 
 class Building(AministrativeObject):
@@ -437,8 +438,8 @@ class Building(AministrativeObject):
         ))
 
     def odm_ui_widget_select_search_entities_title(self, args: dict) -> str:
-        if 'geo_street' in args:
-            return self.title
-        else:
+        if args.get('full_title'):
             return '{}, {}, {}, {}, {}, {}'.format(self.title, self.street.title, self.district.title, self.city.title,
                                                    self.province.title, self.country.title)
+        else:
+            return self.title

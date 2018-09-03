@@ -115,6 +115,10 @@ class AdministrativeSelect(_taxonomy.widget.TermSelectSearch):
         if self._tags and not self._linked_select:
             raise RuntimeError('You cannot use tags without linked select')
 
+        self._full_title = kwargs.get('full_title', not self._linked_select)
+        if self._full_title:
+            self._entity_title_args['full_title'] = True
+
     def set_val(self, value):
         # Value may be not a reference but simple string
         if value and self._tags:
