@@ -1,6 +1,6 @@
 {
   "name": "geo",
-  "version": "2.5",
+  "version": "2.6",
   "description": {
     "en": "Geo",
     "ru": "Гео",
@@ -8,7 +8,7 @@
   },
   "url": "https://github.com/pytsite/plugin-geo",
   "author": {
-    "name": "Alexander Shepetko",
+    "name": "Oleksandr Shepetko",
     "email": "a@shepetko.com",
     "url": "https://shepetko.com"
   },
@@ -17,7 +17,7 @@
       "admin>=1.7",
       "assetman>=2.4",
       "form>=4.13",
-      "odm>=3.5",
+      "odm>=4.0",
       "odm_ui>=3.22",
       "tag>=3.1",
       "taxonomy>=4.0",

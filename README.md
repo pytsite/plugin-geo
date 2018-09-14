@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 2.6 (2018-09-14)
+
+Support of `odm-4.0`.
+
+
 ### 2.5 (2018-09-03)
 
 New constructor's argument `full_title` added in `AdministrativeSelect`

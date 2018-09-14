@@ -1,6 +1,6 @@
 """PytSite Geo UI Plugin Widgets
 """
-__author__ = 'Alexander Shepetko'
+__author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
@@ -124,7 +124,7 @@ class AdministrativeSelect(_taxonomy.widget.TermSelectSearch):
         if value and self._tags:
             try:
                 # Check if the reference was given
-                _odm.resolve_manual_ref(value)
+                _odm.resolve_ref(value)
             except _odm.error.InvalidReference:
                 from . import _api
 
@@ -145,7 +145,7 @@ class AdministrativeSelect(_taxonomy.widget.TermSelectSearch):
                     elif self._model == 'geo_building':
                         term.f_set('street', self._linked_select.value)
 
-                value = term.save().manual_ref
+                value = term.save().ref
 
         return super().set_val(value)
 

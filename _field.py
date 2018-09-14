@@ -1,6 +1,6 @@
 """PytSite Geo Plugin ODM Fields
 """
-__author__ = 'Alexander Shepetko'
+__author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
@@ -121,7 +121,7 @@ class Address(_odm.field.Dict):
         return super().set_val(value, **kwargs)
 
 
-class AdministrativeObject(_odm.field.ManualRef):
+class AdministrativeObject(_odm.field.Ref):
     pass
 
 
