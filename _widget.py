@@ -31,7 +31,6 @@ class Location(_widget.Abstract):
         super().__init__(uid, **kwargs)
 
         self._autodetect = kwargs.get('autodetect', False)
-        self._js_modules.append('pytsite-geo-widget-location')
         self._css += ' widget-geo-location'
 
         # Validation rule for 'required' widget

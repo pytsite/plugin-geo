@@ -10,11 +10,8 @@ from ._api import dispense, find, find_country, find_province, find_city, find_d
 
 
 def plugin_load():
-    from pytsite import lang
-    from plugins import taxonomy, admin, assetman
+    from plugins import taxonomy, admin
     from . import _model
-
-    lang.register_package(__name__)
 
     admin.sidebar.add_section('geo', 'geo@geo')
 
@@ -30,16 +27,3 @@ def plugin_load():
                             menu_icon='fa fas fa-road', menu_sid='geo')
     taxonomy.register_model('geo_building', _model.Building, __name__ + '@buildings',
                             menu_icon='fa fas fa-building', menu_sid='geo')
-
-    # Resource packages
-    assetman.register_package(__name__)
-
-    # Assets
-    assetman.t_js(__name__)
-    assetman.js_module('geo-widget-location', __name__ + '@js/widget-location')
-
-
-def plugin_install():
-    from plugins import assetman
-
-    assetman.build(__name__)
