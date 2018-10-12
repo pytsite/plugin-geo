@@ -1,6 +1,6 @@
 {
   "name": "geo",
-  "version": "3.0",
+  "version": "3.1",
   "description": {
     "en": "Geo",
     "ru": "Гео",
@@ -16,7 +16,7 @@
     "pytsite": ">=8",
     "plugins": {
       "admin": "2.x",
-      "assetman": "3.x",
+      "assetman": "4.x",
       "form": "5.x",
       "odm": "5.x",
       "odm_ui": "4.x",
