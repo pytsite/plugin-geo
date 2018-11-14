@@ -4,9 +4,8 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import Union as _Union, List as _List, Dict as _Dict
+from typing import Union as _Union
 from decimal import Decimal as _Decimal
-from pytsite import logger as _logger, lang as _lang
 from plugins import odm as _odm, odm_ui as _odm_ui, tag as _tag, form as _form, widget as _widget
 from . import _field, _widget as _geo_widget
 
@@ -63,26 +62,6 @@ class AministrativeObject(_tag.Tag):
             h_size='col-12 col-xs-12 col-sm-2 col-lg-1',
             value=self.lat,
         ))
-
-    @classmethod
-    def odm_ui_widget_select_search_entities(cls, args: dict) -> _List[_Dict[str, str]]:
-        query = args.get('q')
-        f = _odm.find('geo_{}'.format(cls.__name__.lower())).eq('language', _lang.get_current())
-
-        for k, v in args.items():
-            try:
-                f_name = k.replace('geo_', '')
-                if f.mock.has_field(f_name) and v:
-                    f.eq(f_name, v)
-            except _odm.error.InvalidReference as e:
-                _logger.error(e)
-                return []
-
-        if query:
-            f.regex('title', query, True)
-
-        return [{'id': e.model + ':' + str(e.id), 'text': e.odm_ui_widget_select_search_entities_title(args)}
-                for e in f.get(10)]
 
 
 class Country(AministrativeObject):

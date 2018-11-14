@@ -7,7 +7,7 @@ __license__ = 'MIT'
 from typing import Union as _Union
 from frozendict import frozendict as _frozendict
 from pytsite import html as _html, validation as _validation
-from plugins import geo as _geo, widget as _widget, odm as _odm, taxonomy as _taxonomy
+from plugins import geo as _geo, widget as _widget, odm as _odm, odm_ui as _odm_ui
 
 
 class Location(_widget.Abstract):
@@ -105,7 +105,7 @@ class Location(_widget.Abstract):
         return inputs
 
 
-class AdministrativeSelect(_taxonomy.widget.TermSelectSearch):
+class AdministrativeSelect(_odm_ui.widget.EntitySelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """

@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.3 (2018-11-14)
+
+Support of `odm_ui-5.x`.
+
+
 ### 3.2 (2018-10-22)
 
 Support of `assetman-5.x` and `widget-4.x`.
