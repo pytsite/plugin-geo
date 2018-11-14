@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.3.1 (2018-11-14)
+
+`odm_ui_widget_select_search_entities()` hook support fixed.
+
+
 ### 3.3 (2018-11-14)
 
 Support of `odm_ui-5.x`.
