@@ -109,7 +109,9 @@ class AdministrativeSelect(_odm_ui.widget.EntitySelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
-        super().__init__(uid, sort_field='title', **kwargs)
+        kwargs.setdefault('sort_by', 'title')
+
+        super().__init__(uid, **kwargs)
 
         if self._tags and not self._linked_select:
             raise RuntimeError('You cannot use tags without linked select')

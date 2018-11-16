@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.3.2 (2018-11-16)
+
+Typo in argument name fixed.
+
+
 ### 3.3.1 (2018-11-14)
 
 `odm_ui_widget_select_search_entities()` hook support fixed.
