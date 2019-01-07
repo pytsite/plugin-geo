@@ -21,7 +21,7 @@ def dispense(model: str, title: str, alias: str = None, language: str = None) ->
     return term
 
 
-def find(model: str, title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find(model: str, title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find a geo term
     """
     f = _taxonomy.find(model.format(model), language)
@@ -35,37 +35,37 @@ def find(model: str, title: str = None, alias: str = None, language: str = None)
     return f
 
 
-def find_country(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_country(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find country
     """
     return find('geo_country', title, alias, language)
 
 
-def find_province(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_province(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find province
     """
     return find('geo_province', title, alias, language)
 
 
-def find_city(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_city(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find city
     """
     return find('geo_city', title, alias, language)
 
 
-def find_district(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_district(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find district
     """
     return find('geo_district', title, alias, language)
 
 
-def find_street(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_street(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find street
     """
     return find('geo_street', title, alias, language)
 
 
-def find_building(title: str = None, alias: str = None, language: str = None) -> _odm.Finder:
+def find_building(title: str = None, alias: str = None, language: str = None) -> _odm.SingleModelFinder:
     """Find building
     """
     return find('geo_building', title, alias, language)
