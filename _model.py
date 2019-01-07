@@ -63,18 +63,18 @@ class AministrativeObject(_tag.Tag):
             value=self.lat,
         ))
 
-    @classmethod
-    def odm_ui_widget_select_search_entities(cls, f: _odm.Finder, args: dict):
+    def odm_ui_widget_select_search_entities(self, f: _odm.MultiModelFinder, args: dict):
         super().odm_ui_widget_select_search_entities(f, args)
 
         # Handle linked selects
         for k, v in args.items():
-            try:
+            if k.startswith('geo_'):
                 f_name = k.replace('geo_', '')
-                if f.mock.has_field(f_name) and v:
-                    f.eq(f_name, v)
-            except _odm.error.InvalidReference as e:
-                pass
+                try:
+                    if self.has_field(f_name) and v:
+                        f.eq(f_name, v)
+                except _odm.error.InvalidReference as e:
+                    pass
 
 
 class Country(AministrativeObject):

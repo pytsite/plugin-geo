@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.5 (2019-01-07)
+
+Support of `odm-5.7` and `odm_ui-6.1`.
+
+
 ### 3.4 (2019-01-02)
 
 Support of `odm_ui-6.x`.
