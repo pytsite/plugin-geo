@@ -110,6 +110,7 @@ class AdministrativeSelect(_odm_ui.widget.EntitySelect):
         """Init
         """
         kwargs.setdefault('sort_by', 'title')
+        kwargs.setdefault('minimum_input_length', 1)
 
         super().__init__(uid, **kwargs)
 

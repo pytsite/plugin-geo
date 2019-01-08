@@ -4,6 +4,12 @@
 ## Changelog
 
 
+### 3.5.2 (2019-01-08)
+
+`widget.AdministrativeSelect.minimum_input_length`'s default value set
+to `1`.
+
+
 ### 3.5.1 (2019-01-07)
 
 Type hinting fixed.
