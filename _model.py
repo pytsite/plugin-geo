@@ -110,8 +110,7 @@ class Province(AministrativeObject):
     def country(self, value: Country):
         self.f_set('country', value)
 
-    @classmethod
-    def odm_ui_browser_setup(cls, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -172,8 +171,7 @@ class City(AministrativeObject):
     def country(self) -> Country:
         return self.province.country
 
-    @classmethod
-    def odm_ui_browser_setup(cls, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -241,7 +239,7 @@ class District(AministrativeObject):
         return self.city.country
 
     @classmethod
-    def odm_ui_browser_setup(cls, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -314,8 +312,7 @@ class Street(AministrativeObject):
     def country(self) -> Country:
         return self.district.country
 
-    @classmethod
-    def odm_ui_browser_setup(cls, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -395,8 +392,7 @@ class Building(AministrativeObject):
     def country(self) -> Country:
         return self.province.country
 
-    @classmethod
-    def odm_ui_browser_setup(cls, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'

@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.6 (2019-01-08)
+
+Support of `odm_ui-7.x`.
+
+
 ### 3.5.2 (2019-01-08)
 
 `widget.AdministrativeSelect.minimum_input_length`'s default value set
