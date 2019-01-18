@@ -238,7 +238,6 @@ class District(AministrativeObject):
     def country(self) -> Country:
         return self.city.country
 
-    @classmethod
     def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
