@@ -130,21 +130,24 @@ class AdministrativeSelect(_odm_ui.widget.EntitySelect):
             except _odm.error.InvalidReference:
                 from . import _api
 
+                # EntitySelect designed to work with multiple model, so it is necessary to extract model name
+                model = self._model[0]
+
                 # Search for existing term
-                term = _api.find(self._model, value).first()
+                term = _api.find(model, value).first()
 
                 # Term not found, create it
                 if not term:
-                    term = _api.dispense(self._model, value)
-                    if self._model == 'geo_province':
+                    term = _api.dispense(model, value)
+                    if model == 'geo_province':
                         term.f_set('country', self._linked_select.value)
-                    elif self._model == 'geo_city':
+                    elif model == 'geo_city':
                         term.f_set('province', self._linked_select.value)
-                    elif self._model == 'geo_district':
+                    elif model == 'geo_district':
                         term.f_set('city', self._linked_select.value)
-                    elif self._model == 'geo_street':
+                    elif model == 'geo_street':
                         term.f_set('district', self._linked_select.value)
-                    elif self._model == 'geo_building':
+                    elif model == 'geo_building':
                         term.f_set('street', self._linked_select.value)
 
                 value = term.save().ref

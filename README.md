@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.6.1 (2019-01-18)
+
+Error in `widget.AdministrativeSelect.set_val()` fixed.
+
+
 ### 3.6 (2019-01-08)
 
 Support of `odm_ui-7.x`.
