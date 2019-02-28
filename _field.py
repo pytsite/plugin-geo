@@ -36,32 +36,30 @@ class Location(_odm.field.Dict):
     def is_empty(self) -> bool:
         return self.get_val()['geo_point']['coordinates'] == (0.0, 0.0)
 
-    def set_val(self, value: _Union[dict, _frozendict], **kwargs):
-        """Hook.
-        """
-        if isinstance(value, _frozendict):
-            value = dict(value)
+    def _on_set(self, raw_value: _Union[dict, _frozendict], **kwargs):
+        if isinstance(raw_value, _frozendict):
+            raw_value = dict(raw_value)
 
-        if isinstance(value, (dict, _frozendict)):
+        if isinstance(raw_value, (dict, _frozendict)):
             # Checking and setting up all necessary keys
             for k in ('lng', 'lat', 'accuracy', 'alt', 'alt_accuracy', 'heading', 'speed'):
-                if k in value:
+                if k in raw_value:
                     try:
-                        value[k] = float(value[k])
+                        raw_value[k] = float(raw_value[k])
                     except ValueError:
-                        value[k] = 0.0
+                        raw_value[k] = 0.0
                 else:
-                    value[k] = 0.0
+                    raw_value[k] = 0.0
 
-            value['geo_point'] = {
+            raw_value['geo_point'] = {
                 'type': 'Point',
-                'coordinates': (value['lng'], value['lat']),
+                'coordinates': (raw_value['lng'], raw_value['lat']),
             }
 
-        elif value is not None:
+        elif raw_value is not None:
             raise ValueError("Field '{}': dict or None expected.".format(self.name))
 
-        return super().set_val(value, **kwargs)
+        return super()._on_set(raw_value, **kwargs)
 
 
 class Address(_odm.field.Dict):
@@ -91,34 +89,34 @@ class Address(_odm.field.Dict):
 
         return (v['lng'], v['lat']) == (0.0, 0.0) or not v['address']
 
-    def set_val(self, value: _Union[dict, _frozendict], **kwargs):
-        """Hook.
+    def _on_set(self, raw_value: _Union[dict, _frozendict], **kwargs) -> dict:
+        """Hook
         """
-        if isinstance(value, _frozendict):
-            value = dict(value)
+        if isinstance(raw_value, _frozendict):
+            raw_value = dict(raw_value)
 
-        if isinstance(value, dict):
+        if isinstance(raw_value, dict):
             # Checking lat and lng
             for k in ('lng', 'lat'):
-                if k in value:
+                if k in raw_value:
                     try:
-                        value[k] = float(value[k])
+                        raw_value[k] = float(raw_value[k])
                     except ValueError:
-                        value[k] = 0.0
+                        raw_value[k] = 0.0
                 else:
-                    value[k] = 0.0
+                    raw_value[k] = 0.0
 
             # Checking address
-            if 'address' in value and not isinstance(value['address'], str):
-                raise TypeError("Value of field '{}.address' must be a str".format(self.name))
+            if 'address' in raw_value and not isinstance(raw_value['address'], str):
+                raise TypeError("raw_value of field '{}.address' must be a str".format(self.name))
 
             # Helper for building MongoDB's indexes
-            value['geo_point'] = {
+            raw_value['geo_point'] = {
                 'type': 'Point',
-                'coordinates': (value['lng'], value['lat']),
+                'coordinates': (raw_value['lng'], raw_value['lat']),
             }
 
-        return super().set_val(value, **kwargs)
+        return super()._on_set(raw_value, **kwargs)
 
 
 class AdministrativeObject(_odm.field.Ref):
