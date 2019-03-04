@@ -47,7 +47,7 @@ class AministrativeObject(_tag.Tag):
             label=self.t('longitude'),
             min=-180.0,
             max=180.0,
-            required=self.get_field('lng').required,
+            required=self.get_field('lng').is_required,
             h_size='col-12 col-xs-12 col-sm-2 col-lg-1',
             value=self.lng,
         ))
@@ -58,7 +58,7 @@ class AministrativeObject(_tag.Tag):
             label=self.t('latitude'),
             min=-90.0,
             max=90.0,
-            required=self.get_field('lng').required,
+            required=self.get_field('lng').is_required,
             h_size='col-12 col-xs-12 col-sm-2 col-lg-1',
             value=self.lat,
         ))
@@ -92,15 +92,15 @@ class Province(AministrativeObject):
     def _setup_fields(self):
         super()._setup_fields()
 
-        self.define_field(_field.Country('country', required=True))
+        self.define_field(_field.Country('country', is_required=True))
 
-    def _pre_save(self, **kwargs):
+    def _on_pre_save(self, **kwargs):
         """Hook
         """
         if not self.alias:
             self.f_set('alias', '{}-{}'.format(self.title, self.country.alias))
 
-        super()._pre_save(**kwargs)
+        super()._on_pre_save(**kwargs)
 
     @property
     def country(self) -> Country:
@@ -131,7 +131,7 @@ class Province(AministrativeObject):
             weight=50,
             label=self.t('country'),
             h_size='col-12 col-xs-12 col-lg-6',
-            required=self.get_field('country').required,
+            required=self.get_field('country').is_required,
             value=self.country,
         ))
 
@@ -149,15 +149,15 @@ class City(AministrativeObject):
     def _setup_fields(self):
         super()._setup_fields()
 
-        self.define_field(_field.Province('province', required=True))
+        self.define_field(_field.Province('province', is_required=True))
 
-    def _pre_save(self, **kwargs):
+    def _on_pre_save(self, **kwargs):
         """Hook
         """
         if not self.alias:
             self.f_set('alias', '{}-{}'.format(self.title, self.province.alias))
 
-        super()._pre_save(**kwargs)
+        super()._on_pre_save(**kwargs)
 
     @property
     def province(self) -> Province:
@@ -194,7 +194,7 @@ class City(AministrativeObject):
             weight=50,
             label=self.t('province'),
             h_size='col-12 col-xs-12 col-lg-6',
-            required=self.get_field('province').required,
+            required=self.get_field('province').is_required,
             value=self.province,
         ))
 
@@ -212,15 +212,15 @@ class District(AministrativeObject):
     def _setup_fields(self):
         super()._setup_fields()
 
-        self.define_field(_field.City('city', required=True))
+        self.define_field(_field.City('city', is_required=True))
 
-    def _pre_save(self, **kwargs):
+    def _on_pre_save(self, **kwargs):
         """Hook
         """
         if not self.alias:
             self.f_set('alias', '{}-{}'.format(self.title, self.city.alias))
 
-        super()._pre_save(**kwargs)
+        super()._on_pre_save(**kwargs)
 
     @property
     def city(self) -> City:
@@ -263,7 +263,7 @@ class District(AministrativeObject):
             weight=50,
             label=self.t('city'),
             h_size='col-12 col-xs-12 col-lg-6',
-            required=self.get_field('city').required,
+            required=self.get_field('city').is_required,
             value=self.city,
         ))
 
@@ -281,15 +281,15 @@ class Street(AministrativeObject):
     def _setup_fields(self):
         super()._setup_fields()
 
-        self.define_field(_field.District('district', required=True))
+        self.define_field(_field.District('district', is_required=True))
 
-    def _pre_save(self, **kwargs):
+    def _on_pre_save(self, **kwargs):
         """Hook
         """
         if not self.alias:
             self.f_set('alias', '{}-{}'.format(self.title, self.district.alias))
 
-        super()._pre_save(**kwargs)
+        super()._on_pre_save(**kwargs)
 
     @property
     def district(self) -> District:
@@ -338,7 +338,7 @@ class Street(AministrativeObject):
             weight=50,
             label=self.t('district'),
             h_size='col-12 col-xs-12 col-lg-6',
-            required=self.get_field('district').required,
+            required=self.get_field('district').is_required,
             value=self.district,
         ))
 
@@ -357,15 +357,15 @@ class Building(AministrativeObject):
     def _setup_fields(self):
         super()._setup_fields()
 
-        self.define_field(_field.Street('street', required=True))
+        self.define_field(_field.Street('street', is_required=True))
 
-    def _pre_save(self, **kwargs):
+    def _on_pre_save(self, **kwargs):
         """Hook
         """
         if not self.alias:
             self.f_set('alias', '{}-{}'.format(self.title, self.street.alias))
 
-        super()._pre_save(**kwargs)
+        super()._on_pre_save(**kwargs)
 
     @property
     def street(self) -> Street:
@@ -420,7 +420,7 @@ class Building(AministrativeObject):
             weight=50,
             label=self.t('street'),
             h_size='col-12 col-xs-12 col-lg-6',
-            required=self.get_field('street').required,
+            required=self.get_field('street').is_required,
             value=self.street,
         ))
 

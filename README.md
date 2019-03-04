@@ -4,6 +4,11 @@
 ## Changelog
 
 
+### 3.7 (2019-03-04)
+
+Support of `odm-6.0`.
+
+
 ### 3.6.3 (2019-02-28)
 
 Refactoring.

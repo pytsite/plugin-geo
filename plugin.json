@@ -1,6 +1,6 @@
 {
   "name": "geo",
-  "version": "3.6.3",
+  "version": "3.7",
   "description": {
     "en": "Geo",
     "ru": "Гео",
@@ -18,7 +18,7 @@
       "admin": "^2.0",
       "assetman": "^5.0",
       "form": "^5.0",
-      "odm": "^5.7",
+      "odm": "^6.0",
       "odm_ui": "^7.0",
       "tag": "^4.0",
       "taxonomy": "^5.0",
