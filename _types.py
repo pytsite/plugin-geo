@@ -4,7 +4,7 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import List as _List
+from typing import List
 
 
 class Abstract:
@@ -107,7 +107,7 @@ class AddressComponent(Abstract):
         return self._short_name
 
     @property
-    def types(self) -> _List[str]:
+    def types(self) -> List[str]:
         return self._types
 
     def as_jsonable(self) -> dict:
@@ -135,11 +135,11 @@ class GeocodingResult(Abstract):
         return self._formatted_address
 
     @property
-    def types(self) -> _List[str]:
+    def types(self) -> List[str]:
         return self._types
 
     @property
-    def address_components(self) -> _List[AddressComponent]:
+    def address_components(self) -> List[AddressComponent]:
         return self._address_components
 
     @property
@@ -157,10 +157,10 @@ class GeocodingResult(Abstract):
 
 
 class GeocodingResults(Abstract):
-    def __init__(self, data: _List[dict]):
+    def __init__(self, data: List[dict]):
         self._results = [GeocodingResult(d) for d in data]
 
-    def results(self) -> _List[GeocodingResult]:
+    def results(self) -> List[GeocodingResult]:
         return self._results
 
     def __iter__(self):

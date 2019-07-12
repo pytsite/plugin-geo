@@ -4,10 +4,10 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from pytsite import validation as _ps_validation
+from pytsite import validation
 
 
-class LocationNonEmpty(_ps_validation.rule.DictPartsNonEmpty):
+class LocationNonEmpty(validation.rule.DictPartsNonEmpty):
     """Check if the location structure is not empty.
     """
 
@@ -18,7 +18,7 @@ class LocationNonEmpty(_ps_validation.rule.DictPartsNonEmpty):
         super().__init__(value, msg_id, msg_args, keys=('lng', 'lat'))
 
 
-class AddressNonEmpty(_ps_validation.rule.DictPartsNonEmpty):
+class AddressNonEmpty(validation.rule.DictPartsNonEmpty):
     """Check if an address structure is empty.
     """
 

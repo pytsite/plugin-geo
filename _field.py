@@ -4,12 +4,12 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import Union as _Union
-from frozendict import frozendict as _frozendict
-from plugins import odm as _odm
+from typing import Union
+from frozendict import frozendict
+from plugins import odm
 
 
-class Location(_odm.field.Dict):
+class Location(odm.field.Dict):
     """Geo Location Field.
     """
 
@@ -36,11 +36,11 @@ class Location(_odm.field.Dict):
     def is_empty(self) -> bool:
         return self.get_val()['geo_point']['coordinates'] == (0.0, 0.0)
 
-    def _on_set(self, raw_value: _Union[dict, _frozendict], **kwargs):
-        if isinstance(raw_value, _frozendict):
+    def _on_set(self, raw_value: Union[dict, frozendict], **kwargs):
+        if isinstance(raw_value, frozendict):
             raw_value = dict(raw_value)
 
-        if isinstance(raw_value, (dict, _frozendict)):
+        if isinstance(raw_value, (dict, frozendict)):
             # Checking and setting up all necessary keys
             for k in ('lng', 'lat', 'accuracy', 'alt', 'alt_accuracy', 'heading', 'speed'):
                 if k in raw_value:
@@ -62,7 +62,7 @@ class Location(_odm.field.Dict):
         return super()._on_set(raw_value, **kwargs)
 
 
-class Address(_odm.field.Dict):
+class Address(odm.field.Dict):
     """Geo Address Field
     """
 
@@ -89,10 +89,10 @@ class Address(_odm.field.Dict):
 
         return (v['lng'], v['lat']) == (0.0, 0.0) or not v['address']
 
-    def _on_set(self, raw_value: _Union[dict, _frozendict], **kwargs) -> dict:
+    def _on_set(self, raw_value: Union[dict, frozendict], **kwargs) -> dict:
         """Hook
         """
-        if isinstance(raw_value, _frozendict):
+        if isinstance(raw_value, frozendict):
             raw_value = dict(raw_value)
 
         if isinstance(raw_value, dict):
@@ -119,7 +119,7 @@ class Address(_odm.field.Dict):
         return super()._on_set(raw_value, **kwargs)
 
 
-class AdministrativeObject(_odm.field.Ref):
+class AdministrativeObject(odm.field.Ref):
     pass
 
 

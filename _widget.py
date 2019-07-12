@@ -4,13 +4,14 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import Union as _Union
-from frozendict import frozendict as _frozendict
-from pytsite import html as _html, validation as _validation
-from plugins import geo as _geo, widget as _widget, odm as _odm, odm_ui as _odm_ui
+import htmler
+from typing import Union
+from frozendict import frozendict
+from pytsite import validation
+from plugins import geo, widget, odm, odm_ui
 
 
-class Location(_widget.Abstract):
+class Location(widget.Abstract):
     """Geo Location Input Widget
     """
 
@@ -35,8 +36,8 @@ class Location(_widget.Abstract):
 
         # Validation rule for 'required' widget
         if self._required:
-            self.clr_rules().add_rules([r for r in self.get_rules() if not isinstance(r, _validation.rule.NonEmpty)])
-            self.add_rule(_geo.validation.LocationNonEmpty())
+            self.clr_rules().add_rules([r for r in self.get_rules() if not isinstance(r, validation.rule.NonEmpty)])
+            self.add_rule(geo.validation.LocationNonEmpty())
 
     @property
     def required(self) -> bool:
@@ -45,12 +46,12 @@ class Location(_widget.Abstract):
     @required.setter
     def required(self, value: bool):
         if value:
-            self.add_rule(_geo.validation.LocationNonEmpty())
+            self.add_rule(geo.validation.LocationNonEmpty())
         else:
             # Clear all added NonEmpty and LocationNonEmpty rules
             rules = [r for r in self.get_rules() if not isinstance(r, (
-                _validation.rule.NonEmpty,
-                _geo.validation.LocationNonEmpty
+                validation.rule.NonEmpty,
+                geo.validation.LocationNonEmpty
             ))]
             self.clr_rules().add_rules(rules)
 
@@ -64,14 +65,14 @@ class Location(_widget.Abstract):
     def autodetect(self, value: bool):
         self._autodetect = value
 
-    def set_val(self, val: _Union[dict, _frozendict]):
+    def set_val(self, val: Union[dict, frozendict]):
         """Set value of the widget.
         """
         if val is None:
             self.clr_val()
             return
 
-        if isinstance(val, _frozendict):
+        if isinstance(val, frozendict):
             val = dict(val)
 
         if not isinstance(val, dict):
@@ -88,24 +89,24 @@ class Location(_widget.Abstract):
 
         return super().set_val(val)
 
-    def _get_element(self, **kwargs) -> _html.Element:
+    def _get_element(self, **kwargs) -> htmler.Element:
         """Render the widget.
         :param **kwargs:
         """
-        inputs = _html.TagLessElement()
+        inputs = htmler.TagLessElement()
 
-        inputs.append(_html.P('Longitude: {}, latitude: {}'.format(self.value['lng'], self.value['lat']), css='text'))
+        inputs.append_child(htmler.P(f'Longitude: {self.value["lng"]}, latitude: {self.value["lat"]}', css='text'))
 
         self._data['autodetect'] = self._autodetect
 
         for k in ('lng', 'lat', 'coordinates', 'accuracy', 'alt', 'alt_accuracy', 'heading', 'speed'):
             inp_val = self._value[k] if k in self._value else ''
-            inputs.append(_html.Input(type='hidden', css=k, name=self._uid + '[' + k + ']', value=inp_val))
+            inputs.append_child(htmler.Input(type='hidden', css=k, name=self._uid + '[' + k + ']', value=inp_val))
 
         return inputs
 
 
-class AdministrativeSelect(_odm_ui.widget.EntitySelect):
+class AdministrativeSelect(odm_ui.widget.EntitySelect):
     def __init__(self, uid: str, **kwargs):
         """Init
         """
@@ -126,8 +127,8 @@ class AdministrativeSelect(_odm_ui.widget.EntitySelect):
         if value and self._tags:
             try:
                 # Check if the reference was given
-                _odm.resolve_ref(value)
-            except _odm.error.InvalidReference:
+                odm.resolve_ref(value)
+            except odm.error.InvalidReference:
                 from . import _api
 
                 # EntitySelect designed to work with multiple model, so it is necessary to extract model name

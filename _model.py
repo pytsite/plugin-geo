@@ -4,44 +4,44 @@ __author__ = 'Oleksandr Shepetko'
 __email__ = 'a@shepetko.com'
 __license__ = 'MIT'
 
-from typing import Union as _Union
-from decimal import Decimal as _Decimal
-from plugins import odm as _odm, odm_ui as _odm_ui, tag as _tag, form as _form, widget as _widget
-from . import _field, _widget as _geo_widget
+from typing import Union
+from decimal import Decimal
+from plugins import odm, odm_ui, tag, form, widget
+from . import _field, _widget
 
 
-class AministrativeObject(_tag.Tag):
+class AministrativeObject(tag.Tag):
     def _setup_fields(self):
         super()._setup_fields()
 
         self.remove_field('weight')
 
-        self.define_field(_odm.field.Decimal('lng'))
-        self.define_field(_odm.field.Decimal('lat'))
+        self.define_field(odm.field.Decimal('lng'))
+        self.define_field(odm.field.Decimal('lat'))
 
     @property
-    def lng(self) -> _Decimal:
+    def lng(self) -> Decimal:
         return self.f_get('lng')
 
     @lng.setter
-    def lng(self, value: _Union[_Decimal, float, int, str]):
+    def lng(self, value: Union[Decimal, float, int, str]):
         self.f_set('lng', value)
 
     @property
-    def lat(self) -> _Decimal:
+    def lat(self) -> Decimal:
         return self.f_get('lat')
 
     @lat.setter
-    def lat(self, value: _Union[_Decimal, float, int, str]):
+    def lat(self, value: Union[Decimal, float, int, str]):
         self.f_set('lat', value)
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
         frm.get_widget('title').h_size = 'col-12 col-xs-12 col-lg-6'
         frm.get_widget('alias').h_size = 'col-12 col-xs-12 col-lg-6'
 
-        frm.add_widget(_widget.input.Decimal(
+        frm.add_widget(widget.input.Decimal(
             uid='lng',
             weight=350,
             label=self.t('longitude'),
@@ -52,7 +52,7 @@ class AministrativeObject(_tag.Tag):
             value=self.lng,
         ))
 
-        frm.add_widget(_widget.input.Decimal(
+        frm.add_widget(widget.input.Decimal(
             uid='lat',
             weight=355,
             label=self.t('latitude'),
@@ -63,7 +63,7 @@ class AministrativeObject(_tag.Tag):
             value=self.lat,
         ))
 
-    def odm_ui_widget_select_search_entities(self, f: _odm.MultiModelFinder, args: dict):
+    def odm_ui_widget_select_search_entities(self, f: odm.MultiModelFinder, args: dict):
         super().odm_ui_widget_select_search_entities(f, args)
 
         # Handle linked selects
@@ -73,7 +73,7 @@ class AministrativeObject(_tag.Tag):
                 try:
                     if self.has_field(f_name) and v:
                         f.eq(f_name, v)
-                except _odm.error.InvalidReference as e:
+                except odm.error.InvalidReference as e:
                     pass
 
 
@@ -110,7 +110,7 @@ class Province(AministrativeObject):
     def country(self, value: Country):
         self.f_set('country', value)
 
-    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -123,10 +123,10 @@ class Province(AministrativeObject):
 
         return r
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
-        frm.add_widget(_geo_widget.CountrySelect(
+        frm.add_widget(_widget.CountrySelect(
             uid='country',
             weight=50,
             label=self.t('country'),
@@ -171,7 +171,7 @@ class City(AministrativeObject):
     def country(self) -> Country:
         return self.province.country
 
-    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -186,10 +186,10 @@ class City(AministrativeObject):
 
         return r
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
-        frm.add_widget(_geo_widget.ProvinceSelect(
+        frm.add_widget(_widget.ProvinceSelect(
             uid='province',
             weight=50,
             label=self.t('province'),
@@ -238,7 +238,7 @@ class District(AministrativeObject):
     def country(self) -> Country:
         return self.city.country
 
-    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -255,10 +255,10 @@ class District(AministrativeObject):
 
         return r
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
-        frm.add_widget(_geo_widget.CitySelect(
+        frm.add_widget(_widget.CitySelect(
             uid='city',
             weight=50,
             label=self.t('city'),
@@ -311,7 +311,7 @@ class Street(AministrativeObject):
     def country(self) -> Country:
         return self.district.country
 
-    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -330,10 +330,10 @@ class Street(AministrativeObject):
 
         return r
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
-        frm.add_widget(_geo_widget.DistrictSelect(
+        frm.add_widget(_widget.DistrictSelect(
             uid='district',
             weight=50,
             label=self.t('district'),
@@ -391,7 +391,7 @@ class Building(AministrativeObject):
     def country(self) -> Country:
         return self.province.country
 
-    def odm_ui_browser_setup(self, browser: _odm_ui.Browser):
+    def odm_ui_browser_setup(self, browser: odm_ui.Browser):
         super().odm_ui_browser_setup(browser)
 
         browser.default_sort_field = 'title'
@@ -412,10 +412,10 @@ class Building(AministrativeObject):
 
         return r
 
-    def odm_ui_m_form_setup_widgets(self, frm: _form.Form):
+    def odm_ui_m_form_setup_widgets(self, frm: form.Form):
         super().odm_ui_m_form_setup_widgets(frm)
 
-        frm.add_widget(_geo_widget.StreetSelect(
+        frm.add_widget(_widget.StreetSelect(
             uid='street',
             weight=50,
             label=self.t('street'),
